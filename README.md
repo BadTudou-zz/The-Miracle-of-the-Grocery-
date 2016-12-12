@@ -25,6 +25,6 @@
 
 [Grocery]: ./public/images/The-Miracle-of-the-Grocery.jpg "解忧杂货店"
 
-[img-Grocery]: http://www.freepik.com/free-vector/a-boutique-exterior-view_901819.htm">Designed by Freepik "图片-解忧杂货店"
+[img-Grocery]: http://www.freepik.com/free-vector/a-boutique-exterior-view_901819.htm "Designed by Freepik"
 
 [txt-GPL]: ./LICENSE "GPL"
