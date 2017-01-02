@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20170102104057) do
 
-  create_table "letters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "letters", force: :cascade do |t|
     t.string   "sender"
     t.string   "receiver"
-    t.text     "content",    limit: 65535
+    t.text     "content"
     t.string   "state"
     t.string   "authority"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

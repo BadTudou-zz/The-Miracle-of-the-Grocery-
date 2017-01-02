@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'letters/show'
+
   get 'letters/new'
 
   get 'home/index'
