@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'letters/show'
-
-  get 'letters/new'
+  resources :letters
 
   get 'home/index'
 

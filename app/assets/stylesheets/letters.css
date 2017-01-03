@@ -1,10 +1,13 @@
 body {
   background-color: #123; }
 
+input, textarea {
+  outline: none; }
+
 .stationery {
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  border-bottom: 1px solid #0F2543; }
+  background: url(/images/letter/dot.png);
+  line-height: 30px;
+  font-size: 20px;
+  border: none; }
 
 /*# sourceMappingURL=letters.css.map */
