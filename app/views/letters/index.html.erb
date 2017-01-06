@@ -1,0 +1,24 @@
+<h1>Listing articles</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @letters.each do |letter| %>
+    <tr>
+      <td><%= letter.sender %></td>
+      <td><%= letter.content %></td>
+      <td><%= link_to 'Show', letter_path(letter) %></td>
+      <td><%= link_to 'Edit', edit_letter_path(letter) %></td>
+      <td><%= link_to 'Del',  letter_path(letter),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }  %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= link_to 'New letter', new_letter_path %>
+

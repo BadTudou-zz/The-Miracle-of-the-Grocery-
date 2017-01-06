@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class LettersControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
-    get letters_show_url
+  test "should get create" do
+    get new_letter_url
     assert_response :success
   end
 
