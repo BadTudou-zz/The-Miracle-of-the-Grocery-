@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :letters
+  resources :letters  
+  resources :notices
 
   get 'home/index'
 

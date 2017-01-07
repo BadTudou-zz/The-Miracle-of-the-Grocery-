@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,IACA;EACC,gBAAgB,EAAE,OAAO",
+"sources": ["notices.scss"],
+"names": [],
+"file": "notices.css"
+}

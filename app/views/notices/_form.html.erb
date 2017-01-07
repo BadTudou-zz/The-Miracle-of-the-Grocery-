@@ -1,0 +1,39 @@
+<%= form_for @notice do |f| %>
+	<% if @notice.errors.any? %>
+  	<div id="error_explanation">
+    	<h2><%= pluralize(@letter.errors.count, "error") %> 
+    	prohibited this letter from being saved:</h2>
+    	<ul>
+    	<% @notice.errors.full_messages.each do |msg| %>
+      		<li><%= msg %></li>
+    	<% end %>
+    	</ul>
+  	</div>
+  	<% end %>
+    <div id="title_notice" class="col-lg-offset-3 col-lg-6" style="padding-top: 20px;">
+      <i class="fa fa-2x fa-bell" aria-hidden="true" style="color: #00ADF8; font-weight: bold;">&nbsp;&nbsp;</i>
+      <%= f.text_field :title, class:"stationery", placeholder:"标题" %>
+    </div>
+    <div id="content" style="padding-top: 70px;">
+      <%= f.text_area :content, style:"width:100%; height: 300px; text-indent:2em; overflow-y:scroll; scrollbar-base-color: #2AAA96", class:"stationery", placeholder:"正文" %>
+    </div>
+    <div id="inscribe" style="float: right;">
+      <div id="sender">
+        <i class="fa fa-2x fa-user" aria-hidden="true" style="color: #00ADF8; font-weight: bold;">&nbsp;&nbsp;</i>
+        <%= f.text_field :publisher, class:"stationery", placeholder:" 署名" %>
+      </div>
+      <div id="senderdate">
+        <i class="fa fa-2x fa-calendar" aria-hidden="true" style="color: #00ADF8; font-weight: bold;">&nbsp;&nbsp;</i>
+        <%= f.text_field :created_at, class:"stationery", placeholder:"日期" %>
+      </div>
+
+      <div id="action" style="margin-top: 5px; margin-left: 20px;">
+        <i class="fa fa-1x fa-paper-plane" aria-hidden="true"></i>
+        <%= f.submit class:"btn btn-primary", style:"background-color:#10C8DD; margin-left:5px; border: none; font-size: 16px;" %>
+      </div>
+    </div>
+    <div id="back" style="margin-top: 80px;">
+      <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+      <%= link_to 'Back', notices_path %>
+    </div>
+<% end %>
