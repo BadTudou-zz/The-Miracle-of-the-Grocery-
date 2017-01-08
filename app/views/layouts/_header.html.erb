@@ -1,0 +1,30 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+<a class="navbar-brand" href="#">解忧杂货店</a>
+<div class="container">
+ 	<nav>
+ 		<ul class="nav navbar-nav navbar-right">
+ 			<li class="nav-item"><%= link_to "Home", welcome_index_path %></li>
+  			<% if logged_in? %>
+ 			<li class="nav-item"><%= link_to "Users", '#' %></li>
+ 			<li class="nav-item dropdown">
+ 				<a href="#" class=" dropdown-toggle" data-toggle="dropdown"   aria-haspopup="true" aria-expanded="false">
+ 				Account <b class="caret"></b>
+ 				</a>
+ 				<ul class="dropdown-menu">
+ 					<li><%= link_to "Profile", current_guest %></li>
+ 					<li><%= link_to "Settings", '#' %></li>
+ 					<li class="divider"></li>
+ 					<li>
+  						<%= link_to "Log out", logout_path, method: "delete" %>
+ 					</li>
+ 				</ul>
+ 			</li>
+  			<% else %>
+  			<li><%= link_to "Log in", login_path %></li>
+  			<% end %>
+ 		</ul>
+ 	</nav>
+</div>
+</header>
+<script src="//cdn.bootcss.com/tether/1.4.0/js/tether.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>

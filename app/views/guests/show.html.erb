@@ -1,12 +1,19 @@
 <%= csrf_meta_tags %>
 <%= stylesheet_link_tag "guests.css" %>
-<div id="guest" class="container col-lg-offset-2 col-lg-8" style="background-color: #FFF;">
-	<% if logged_in? %>
+
+<div id="" class="container col-lg-12">
+	<div id="header">
+		<%= render 'layouts/header' %>
+	</div>
+	<br>
+	<div id="guest" class="col-lg-offset-4 col-lg-8" style="background-color: #FFF;">
+		<% if logged_in? %>
 		<span>denglu</span>
 		<%= render 'form' %>
-	<% else %>
+		<% else %>
 		<span>meiyoudenglu</span>
-	<% end %>
+		<% end %>
+	</div>		
+	<%= link_to 'Back', guests_path %>
+| <%= link_to 'Edit', edit_guest_path(@guest) %>	
 </div>
-<%= link_to 'Back', guests_path %>
-| <%= link_to 'Edit', edit_guest_path(@guest) %>
