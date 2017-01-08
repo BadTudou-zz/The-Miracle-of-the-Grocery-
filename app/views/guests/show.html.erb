@@ -1,7 +1,12 @@
 <%= csrf_meta_tags %>
 <%= stylesheet_link_tag "guests.css" %>
 <div id="guest" class="container col-lg-offset-2 col-lg-8" style="background-color: #FFF;">
-	<%= render 'form' %>
+	<% if logged_in? %>
+		<span>denglu</span>
+		<%= render 'form' %>
+	<% else %>
+		<span>meiyoudenglu</span>
+	<% end %>
 </div>
 <%= link_to 'Back', guests_path %>
 | <%= link_to 'Edit', edit_guest_path(@guest) %>

@@ -20,7 +20,7 @@ class GuestsController < ApplicationController
     @guest = Guest.new(guest_params)
     if @guest.save
       flash[:success] = "Welcome to the he TMiracle of the Grocery !"
-      redirect_to @guest
+      redirect_to current_guest
     else
       render 'new'
     end
