@@ -1,0 +1,26 @@
+<h1>Listing guests</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @guests.each do |guest| %>
+    <tr>
+      <td><%= guest.id %></td>
+      <td><%= guest.name %></td>
+      <td><strong><%= guest.password %></strong></td>
+      <td><%= guest.password_digest %></td>
+      <td><%= link_to 'Show', guest_path(guest) %></td>
+      <td><%= link_to 'Edit', edit_guest_path(guest) %></td>
+      <td><%= link_to 'Del',  guest_path(guest),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }  %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= link_to 'New letter', new_guest_path %>
+

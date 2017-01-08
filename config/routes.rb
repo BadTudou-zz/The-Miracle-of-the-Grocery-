@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :letters  
   resources :notices
+  resources :guests do
+  	resources :letters
+  end
 
   get 'home/index'
 

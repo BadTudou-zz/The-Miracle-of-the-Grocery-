@@ -1,0 +1,30 @@
+<%= form_for @guest do |f| %>
+	<% if @guest.errors.any? %>
+  	<div id="error_explanation">
+    	<h2><%= pluralize(@guest.errors.count, "error") %> 
+    	prohibited this letter from being saved:</h2>
+    	<ul>
+    	<% @guest.errors.full_messages.each do |msg| %>
+      		<li><%= msg %></li>
+    	<% end %>
+    	</ul>
+  	</div>
+  	<% end %>
+    
+  <% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %>
+  </div>
+  <% end %>
+
+  <div id="form_guest" class="col-lg-offset-4 col-lg-4" style="border: solid 1px;">
+    <div id="name" class="input-group">
+      <span class="input-group-addon"><i class="fa fa-1x fa-user" aria-hidden="true"></i></span>
+      <%= f.text_field :name, class:"form-control", placeholder:"昵称"%>
+    </div>
+    <div id="password" class="input-group" style="margin-top: 10px; margin-bottom: 10px;">
+      <span class="input-group-addon"><i class="fa fa-1x fa-lock" aria-hidden="true"></i></span>
+      <%= f.password_field :password, class:"form-control", placeholder:"密码"%>
+    </div>
+    <%= f.submit class:"btn btn-primary" %>
+  </div>
+<% end %>
