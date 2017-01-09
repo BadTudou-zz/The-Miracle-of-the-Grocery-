@@ -1,5 +1,7 @@
 class LettersController < ApplicationController
   # skip_before_filter :verify_authenticity_token
+  before_action :logged_in_guest, only: [:edit, :show, :update]
+  before_action :correct_guest,   only: [:edit, :show, :update]
   def index
     @letters = Letter.all
   end

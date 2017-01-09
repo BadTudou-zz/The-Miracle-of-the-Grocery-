@@ -3,3 +3,9 @@
 <div id="guest" class="container col-lg-offset-2 col-lg-8" style="background-color: #FFF;">
 	<%= render 'form' %>
 </div>
+<% if current_guest.storekeeper? || curect_guest?(@guest) %>
+ | <%= link_to "delete", @guest, method: :delete,
+ data: { confirm: "You sure?" } %>
+ <% else %>
+ <strong>无权修改</strong>
+ <% end %>

@@ -1,5 +1,7 @@
 class GuestsController < ApplicationController
-
+  before_action :logged_in_guest, only: [:edit, :show, :update]
+  before_action :correct_guest,   only: [:edit, :show, :update]  
+  before_action :store_keeper, only: [:index ,:destroy]
   def index
     @guests = Guest.all
   end
@@ -20,7 +22,7 @@ class GuestsController < ApplicationController
     @guest = Guest.new(guest_params)
     if @guest.save
       flash[:success] = "Welcome to the he TMiracle of the Grocery !"
-      redirect_to current_guest
+      redirect_back_or @guest
     else
       render 'new'
     end
@@ -46,6 +48,23 @@ class GuestsController < ApplicationController
   private
     def guest_params
       params.require(:guest).permit(:name, :password)
+    end
+
+    def logged_in_guest
+      unless logged_in? 
+        store_location
+        flash[:danger] = "Please log in." 
+        redirect_to login_path 
+      end
+    end
+
+    def correct_guest
+       @guest = Guest.find(params[:id]) 
+       redirect_to(guests_path) unless current_guest?(@guest)
+    end
+
+    def store_keeper
+      redirect_to(home_path) unless current_guest.storekeeper?    
     end
 
 end
