@@ -1,10 +1,17 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-<a class="navbar-brand" href="#">解忧杂货店</a>
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #F1F1F1; border: none;">
+<a class="navbar-brand col-lg-2" href="#">
+<span><img src="../../images/logo.ico" style="width: 48px;"></span>&nbsp;&nbsp;解忧杂货店</a>
+<% if logged_in? %>
+  	<form class="form-inline navbar-form pull-left">
+    	<input class="form-control " type="text" placeholder="Search">
+    	<button class="btn btn-success-outline" type="submit">Search</button>
+  	</form>
+<% end %>
 <div class="container">
  	<nav>
  		<ul class="nav navbar-nav navbar-right">
  			<li class="nav-item"><%= link_to "Home", welcome_index_path %></li>
-  			<% if logged_in? %>
+ 			<% if logged_in? %>
  			<li class="nav-item"><%= link_to "Users", '#' %></li>
  			<li class="nav-item dropdown">
  				<a href="#" class=" dropdown-toggle" data-toggle="dropdown"   aria-haspopup="true" aria-expanded="false">

@@ -36,6 +36,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
 gem 'mysql2'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

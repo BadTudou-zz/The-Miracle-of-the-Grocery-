@@ -12,6 +12,11 @@ class GuestsController < ApplicationController
 
   def show
     @guest = Guest.find(params[:id])
+    @letters = Letter.where("sender = ? OR receiver = ?", params[:id], params[:id])
+    #@letters = @guest.letters.find(sender: params[:id])
+    logger.debug 'debug...........'
+    logger.debug @letters.inspect
+    logger.debug 'debug...........'
   end
 
   def edit
@@ -50,21 +55,8 @@ class GuestsController < ApplicationController
       params.require(:guest).permit(:name, :password)
     end
 
-    def logged_in_guest
-      unless logged_in? 
-        store_location
-        flash[:danger] = "Please log in." 
-        redirect_to login_path 
-      end
-    end
-
-    def correct_guest
-       @guest = Guest.find(params[:id]) 
-       redirect_to(guests_path) unless current_guest?(@guest)
-    end
-
     def store_keeper
-      redirect_to(home_path) unless current_guest.storekeeper?    
+      redirect_to(guests_path) unless current_guest.storekeeper?    
     end
 
 end

@@ -1,7 +1,8 @@
 class LettersController < ApplicationController
   # skip_before_filter :verify_authenticity_token
-  before_action :logged_in_guest, only: [:edit, :show, :update]
-  before_action :correct_guest,   only: [:edit, :show, :update]
+  before_action :logged_in_guest, only: [:new, :edit, :show, :update]
+  before_action :correct_guest,   only: [:new, :edit, :show, :update]
+
   def index
     @letters = Letter.all
   end
@@ -19,7 +20,13 @@ class LettersController < ApplicationController
   end
 
   def create
+    receiver = Guest.where("name = ? ", params[:letter][:receiver]).first
     @letter = Letter.new(letter_params)
+    @letter.receiver = receiver[:id]
+    @letter.sender = session[:guest_id]
+
+    logger.debug @letter.inspect
+
     if @letter.save
       redirect_to @letter
     else
