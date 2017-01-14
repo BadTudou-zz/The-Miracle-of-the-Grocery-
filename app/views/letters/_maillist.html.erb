@@ -24,15 +24,53 @@
  		</ul>
 	</div>
 	<div class="col-lg-12">
-		<ul class="list-group">
-  			<li class="list-group-item" style="height:40px;">
-  				<span class="col-lg-1 label label-default label-pill pull-right">2017-01-23</span>
-  				<div class="col-lg-1">复选</div>
-  				<div class="col-lg-2">寄信人</div>
-  				<div class="col-lg-8">内容摘要</div>
-  				
-    		</li>
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav-item active">
+    			<a class="nav-link" href="#receive" role="tab" data-toggle="tab"><i class="fa fa-paper-plane" aria-hidden="true">收信箱</i></a>
+  			</li>
+
+  			<li class="nav-item">
+    			<a class="nav-link" href="#send" role="tab" data-toggle="tab"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>寄信箱</a>
+  			</li>
   			
+  			<li class="nav-item">
+    			<a class="nav-link" href="#messages" role="tab" data-toggle="tab"><i class="fa fa-history" aria-hidden="true">草稿</i></a>
+  			</li>
 		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="receive">
+  				<ul class="list-group">
+					<% @guest_letters_receive.each do |letter| %>
+  					<li class="list-group-item" style="height:40px;">
+  						<span class="col-lg-2 label label-default label-pill pull-right"><%= letter.created_at %></span>
+  						<div class="col-lg-1"><i class="fa fa-square-o" aria-hidden="true"></i></div>
+  						<div class="col-lg-2"><%= getGuestNameById(letter.sender) %></div>
+  						<div class="col-lg-7"><%= link_to letter.content.slice(0, 20), letter_path(letter) %></div>
+  				
+    				</li>
+  					<% end %>
+				</ul>
+  			</div>
+
+  			<div role="tabpanel" class="tab-pane" id="send">
+  				<ul class="list-group">
+					<% @guest_letters_send.each do |letter| %>
+  					<li class="list-group-item" style="height:40px;">
+  						<span class="col-lg-2 label label-default label-pill pull-right"><%= letter.created_at %></span>
+  						<div class="col-lg-1"><i class="fa fa-square-o" aria-hidden="true"></i></div>
+  						<div class="col-lg-2"><%= getGuestNameById(letter.receiver) %></div>
+  						<div class="col-lg-7"><%= link_to letter.content.slice(0, 20), letter_path(letter) %></div>
+  				
+    				</li>
+  					<% end %>
+				  </ul>
+  			</div>
+
+  			<div role="tabpanel" class="tab-pane" id="messages">草稿</div>
+		</div>
+		
 	</div>
+  
 </div>

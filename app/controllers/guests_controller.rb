@@ -12,11 +12,10 @@ class GuestsController < ApplicationController
 
   def show
     @guest = Guest.find(params[:id])
-    @letters = Letter.where("sender = ? OR receiver = ?", params[:id], params[:id])
-    #@letters = @guest.letters.find(sender: params[:id])
-    logger.debug 'debug...........'
-    logger.debug @letters.inspect
-    logger.debug 'debug...........'
+    get_guest_letters
+    get_guest_letters_send
+    get_geust_letters_receive
+    
   end
 
   def edit

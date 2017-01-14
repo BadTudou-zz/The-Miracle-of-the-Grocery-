@@ -15,4 +15,17 @@ class ApplicationController < ActionController::Base
        @guest = Guest.find(session[:guest_id]) 
        redirect_to(guests_path) unless current_guest?(@guest)
     end
+
+    def get_guest_letters
+      @guest_letters = Letter.where("sender = ? OR receiver = ?", session[:guest_id], session[:guest_id])
+    end
+
+    def get_geust_letters_receive
+      @guest_letters_receive = Letter.where(receiver: session[:guest_id])
+    end
+
+    def get_guest_letters_send
+      @guest_letters_send = Letter.where(sender: session[:guest_id])
+    end
+
 end

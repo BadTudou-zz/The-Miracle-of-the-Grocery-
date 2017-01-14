@@ -30,4 +30,10 @@ module SessionsHelper
   	def store_location
  		session[:forwarding_url] = request.url if request.get?  
  	end
+
+ 	def getGuestNameById(id)
+      guest = Guest.find_by id: id
+	guest[:name]
+
+    end
 end
