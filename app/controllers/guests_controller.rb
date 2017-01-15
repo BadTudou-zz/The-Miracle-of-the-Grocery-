@@ -12,9 +12,9 @@ class GuestsController < ApplicationController
 
   def show
     @guest = Guest.find(params[:id])
-    get_guest_letters
-    get_guest_letters_send
-    get_geust_letters_receive
+    # get_guest_letters
+    # get_guest_letters_send
+    # get_geust_letters_receive
     
   end
 

@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   private
   	 def logged_in_guest
+      get_guest_letters_send
+      get_geust_letters_receive
       unless logged_in? 
         store_location
         flash[:danger] = "Please log in." 

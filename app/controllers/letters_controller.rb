@@ -4,7 +4,6 @@ class LettersController < ApplicationController
   before_action :correct_guest,   only: [:new, :edit, :show, :update]
 
   def index
-    #@letters = Letter.all
     @letters = Letter.paginate(:page => params[:page],:per_page => 2)
   end
 
@@ -14,6 +13,8 @@ class LettersController < ApplicationController
 
   def show
     @letter = Letter.find(params[:id])
+    @letter.sender = getGuestNameById(params[:id])
+    @letter.receiver = getGuestNameById(params[:id])
   end
 
   def edit
@@ -26,10 +27,9 @@ class LettersController < ApplicationController
     @letter.receiver = receiver[:id]
     @letter.sender = session[:guest_id]
 
-    logger.debug @letter.inspect
-
     if @letter.save
-      redirect_to @letter
+      flash[:success] = "letter has been sended!"
+      render plain: "发送成功，请关闭编辑窗口。"
     else
       render 'new'
     end
